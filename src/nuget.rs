@@ -39,7 +39,7 @@ impl NuGet {
             async fn get(this: &NuGet, package: &str) -> Option<Vec<String>> {
                 let url = this
                     .package_base_address
-                    .join(&format!("{}/index.json", package))
+                    .join(&format!("{}/index.json", package.to_ascii_lowercase()))
                     .ok()?;
 
                 let index: VersionIndex = this
